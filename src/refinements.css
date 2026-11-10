@@ -1,0 +1,369 @@
+/* ==========================================================
+   NEXDRIVE · Controller page visual upgrade (visual only)
+   Scoped to .control-page so nothing else is affected.
+   ========================================================== */
+
+/* ---------- SPEEDOMETER ---------- */
+.app-shell .control-page .instrument-center{gap:0}
+.app-shell .control-page .instrument-center>.instrument-label{margin:0 0 8px;color:#8fb2cf;letter-spacing:.22em}
+.app-shell .control-page .speed-gauge{--g:clamp(210px,30vh,270px);position:relative;width:var(--g);height:var(--g);margin:0;filter:drop-shadow(0 14px 22px #000b) drop-shadow(0 0 28px #168bff22)}
+.app-shell .control-page .speed-gauge svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.app-shell .control-page .speed-gauge:after{content:"";position:absolute;left:17%;right:17%;top:9%;height:34%;border-radius:50% 50% 46% 46%/62% 62% 38% 38%;background:linear-gradient(180deg,#ffffff18,#ffffff00);pointer-events:none}
+.app-shell .control-page .gauge-track{stroke:#13212f;stroke-width:8;stroke-linecap:round}
+.app-shell .control-page .gauge-progress{stroke-width:8;stroke-linecap:butt;transition:stroke-dasharray .22s ease-out;filter:drop-shadow(0 0 5px #168bff)}
+.app-shell .control-page .gauge-tick{stroke:#6f879c;stroke-width:1.2}
+.app-shell .control-page .gauge-tick.major{stroke:#c7dcef;stroke-width:2.2}
+.app-shell .control-page .gauge-tick.red{stroke:#e84c59}
+.app-shell .control-page .gauge-num{fill:#8fa8bf;font:600 9px var(--mono)}
+.app-shell .control-page .gauge-brand{fill:#3f6382;font:700 6.5px var(--mono);letter-spacing:.3em}
+.app-shell .control-page .gauge-needle{transform-origin:120px 120px;transform-box:view-box;transition:transform .3s cubic-bezier(.22,.9,.3,1);filter:drop-shadow(0 0 4px #42c9ffcc)}
+.app-shell .control-page .gauge-hub{stroke:#1c2a38;stroke-width:1}
+.app-shell .control-page .gauge-led{fill:#42c9ff;filter:drop-shadow(0 0 4px #42c9ff)}
+.app-shell .control-page .speed-number{position:absolute;left:50%;top:61%;right:auto;bottom:auto;margin:0;transform:none;translate:-50% 0;display:flex;flex-direction:column;align-items:center;font:700 calc(var(--g)*.135) var(--mono);line-height:1;letter-spacing:-.02em;color:#eaf6ff;text-shadow:0 0 14px #168bffaa;pointer-events:none}
+.app-shell .control-page .speed-number small{display:block;margin:3px 0 0;font:600 calc(var(--g)*.04) var(--mono);letter-spacing:.2em;color:#6fa6cc;text-shadow:none}
+.app-shell .control-page .instrument-bottom{margin-top:8px}
+
+/* ---------- MOTOR MODULES ---------- */
+.app-shell .control-page .instrument-side{position:relative;padding:13px 16px 12px;gap:8px;border-radius:8px;background:linear-gradient(160deg,#0f1b28cc,#0a121b99);box-shadow:inset 0 0 0 1px #213548,inset 0 1px #ffffff0a,0 8px 20px #0004}
+.app-shell .control-page .instrument-side:before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:2px;border-radius:2px;background:linear-gradient(#42c9ff,#168bff00)}
+.app-shell .control-page .instrument-side.right:before{left:auto;right:0}
+.app-shell .control-page .instrument-label{color:#8fb2cf}
+.app-shell .control-page .instrument-side strong{font-size:30px;font-variant-numeric:tabular-nums;text-shadow:0 0 14px #168bff55}
+.app-shell .control-page .instrument-track{height:9px;border-radius:2px;background:#13212e;box-shadow:inset 0 0 0 1px #223546;-webkit-mask-image:repeating-linear-gradient(90deg,#000 0 6px,transparent 6px 8px);mask-image:repeating-linear-gradient(90deg,#000 0 6px,transparent 6px 8px)}
+.app-shell .control-page .instrument-track i{border-radius:0;background:linear-gradient(90deg,#168bff,#74e3ff);box-shadow:0 0 10px #42c9ff}
+
+/* ---------- JOYSTICKS ---------- */
+.app-shell .control-page .stick-heading{font:700 9px var(--mono);letter-spacing:.18em;color:#b4c8da}
+.app-shell .control-page .stick-axis{color:#5f7a92}
+.app-shell .control-page .stick-pad{position:relative;border:0;border-radius:50%;background:radial-gradient(circle at 50% 42%,#142231 0%,#0c1620 62%,#070d14 100%);box-shadow:0 0 0 1px #05090e,0 20px 34px #000b,0 6px 12px #0008,inset 0 2px 4px #ffffff10,inset 0 -10px 24px #000c;transition:box-shadow .2s,filter .2s}
+.app-shell .control-page .stick-pad:active,.app-shell .control-page .stick-pad[data-active="true"]{border:0;box-shadow:0 0 0 1px #05090e,0 20px 34px #000b,0 0 30px #168bff2e,inset 0 2px 4px #ffffff10,inset 0 -10px 24px #000c}
+.app-shell .control-page .stick-pad:focus-visible{outline:2px solid #42c9ff66;outline-offset:12px}
+.app-shell .control-page .stick-pad i{pointer-events:none}
+.app-shell .control-page .stick-pad .stick-bezel,.app-shell .control-page .stick-pad .stick-ticks,.app-shell .control-page .stick-pad .stick-well,.app-shell .control-page .stick-pad .stick-shaft{position:absolute;display:block}
+
+/* machined metal bezel */
+.app-shell .control-page .stick-pad .stick-bezel{inset:-9px;border-radius:50%;background:conic-gradient(from 25deg,#9db1c4,#2b3a4a 10%,#0c141c 22%,#7f93a7 36%,#1c2936 50%,#0a1118 63%,#8498ab 78%,#2c3b4b 90%,#9db1c4);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 9px),#000 calc(100% - 8px));mask:radial-gradient(farthest-side,transparent calc(100% - 9px),#000 calc(100% - 8px))}
+/* degree ticks */
+.app-shell .control-page .stick-pad .stick-ticks{inset:2.2%;border-radius:50%;background:repeating-conic-gradient(from -1.2deg,#bcd8ee 0 2.4deg,transparent 2.4deg 30deg),repeating-conic-gradient(from -.4deg,#6f8aa266 0 .8deg,transparent .8deg 6deg);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 9px),#000 calc(100% - 8px),#000 calc(100% - 1px),transparent);mask:radial-gradient(farthest-side,transparent calc(100% - 9px),#000 calc(100% - 8px),#000 calc(100% - 1px),transparent);opacity:.55;transition:opacity .2s,filter .2s}
+/* recessed gate */
+.app-shell .control-page .stick-pad .stick-well{inset:9%;border-radius:50%;background:radial-gradient(circle at 50% 50%,#202e3c 0 9%,#0a1118 10% 13%,transparent 14%),radial-gradient(circle at 50% 36%,#08101a 0%,#0b1520 65%,#101c29 100%);box-shadow:inset 0 8px 18px #000e,inset 0 -2px 6px #ffffff0c,0 0 0 1px #2a3d50,0 0 0 4px #091017,0 0 0 5px #1b2a39}
+.app-shell .control-page .stick-pad .ring-one{inset:31%;border:1px dashed #5f84a240;border-radius:50%}
+.app-shell .control-page .stick-pad .ring-two{inset:53%;border:1px solid #5f84a226;border-radius:50%}
+/* rubber boot that stretches toward the knob */
+.app-shell .control-page .stick-pad .stick-shaft{left:50%;top:50%;height:16px;margin-top:-8px;width:calc(var(--len,0) * 1px);transform-origin:0 50%;transform:rotate(var(--ang,0rad));border-radius:8px;background:linear-gradient(180deg,#2c3a48,#0a1017 55%,#1a2530);box-shadow:0 3px 6px #0009}
+/* thumb cap */
+.app-shell .control-page .stick-pad .stick-knob{position:absolute;inset:auto;left:50%;top:50%;margin:0;translate:-50% -50%;border:1px solid #6f8294;border-radius:50%;background:radial-gradient(circle at 50% 50%,transparent 0 22%,#00000055 23% 24%,transparent 25%),repeating-radial-gradient(circle at 50% 50%,#ffffff0d 0 1px,transparent 1px 4px),radial-gradient(circle at 36% 28%,#7d8d9b 0,#44525f 24%,#1e2933 60%,#0c1218 100%);box-shadow:0 14px 18px #000c,0 4px 6px #000a,inset 0 3px 5px #ffffff3d,inset 0 -6px 10px #000b,0 0 0 4px #0d151d,0 0 0 5px #2c3c4c}
+.app-shell .control-page .stick-pad .stick-knob span{position:absolute;inset:auto;left:50%;top:50%;margin:0;translate:-50% -50%;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#d9f6ff,#42c9ff 40%,#168bff 100%);box-shadow:0 0 0 3px #07111b,0 0 0 4px #20425d,0 0 12px #42c9ff99;opacity:.9}
+/* labels */
+.app-shell .control-page .stick-pad .pad-label{position:absolute;margin:0;transform:none;font:700 7px var(--mono);letter-spacing:.16em;color:#58728a;pointer-events:none}
+.app-shell .control-page .stick-pad .pad-label.top{top:14%;left:50%;right:auto;bottom:auto;translate:-50% 0}
+.app-shell .control-page .stick-pad .pad-label.bottom{bottom:14%;left:50%;top:auto;right:auto;translate:-50% 0}
+.app-shell .control-page .stick-pad .pad-label.left{left:12%;top:50%;right:auto;bottom:auto;translate:0 -50%}
+.app-shell .control-page .stick-pad .pad-label.right{right:12%;top:50%;left:auto;bottom:auto;translate:0 -50%}
+/* active glow */
+.app-shell .control-page .stick-pad[data-active="true"] .stick-ticks{opacity:1;filter:drop-shadow(0 0 3px #42c9ffaa)}
+.app-shell .control-page .stick-pad[data-active="true"] .ring-one{border-color:#42c9ff66}
+.app-shell .control-page .stick-pad[data-active="true"] .stick-well{box-shadow:inset 0 8px 18px #000e,inset 0 -2px 6px #ffffff0c,0 0 0 1px #2f6f9a,0 0 0 4px #091017,0 0 0 5px #1b2a39,0 0 18px #168bff44}
+.app-shell .control-page .stick-pad[data-active="true"] .stick-knob span{opacity:1;box-shadow:0 0 0 3px #07111b,0 0 0 4px #2d7db3,0 0 20px #42c9ffcc}
+/* locked */
+.app-shell .control-page .stick-unit.disabled .stick-pad{filter:saturate(.35) brightness(.78)}
+.app-shell .control-page .stick-unit.disabled .stick-pad .stick-knob span{background:#3a4a59;box-shadow:0 0 0 3px #07111b,0 0 0 4px #1d2a37}
+
+/* ---------- VECTOR COMPASS ---------- */
+.app-shell .control-page .readout-cap{color:#6f8aa3;letter-spacing:.16em}
+.app-shell .control-page .vector{border-radius:50%;background:radial-gradient(circle at 50% 38%,#16283a,#0a121a);box-shadow:inset 0 0 0 1px #2c4256,inset 0 4px 10px #0009,0 0 0 4px #0b131b,0 0 0 5px #263747}
+.app-shell .control-page .vector span{color:#4a6175}
+.app-shell .control-page .vector span.lit{color:#9be6ff;filter:drop-shadow(0 0 5px #42c9ff)}
+
+/* ---------- EMERGENCY STOP ---------- */
+.app-shell .control-page .sticks-row .joystick-stop{--stop:78px;position:relative;width:var(--stop);height:var(--stop);border:0;border-radius:50%;color:#ffe3e5;background:radial-gradient(circle at 50% 34%,#ff6f7b 0,#d62d3d 38%,#8d1624 72%,#5b0d17 100%);box-shadow:inset 0 3px 5px #ffffff55,inset 0 -8px 12px #3a0509cc,0 0 0 3px #12090c,0 8px 16px #000a,0 0 22px #e84c5933}
+.app-shell .control-page .sticks-row .joystick-stop:before{content:"";position:absolute;inset:-9px;border-radius:50%;background:repeating-conic-gradient(#d6a417 0 15deg,#15110a 15deg 30deg);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));pointer-events:none}
+.app-shell .control-page .sticks-row .joystick-stop:hover{background:radial-gradient(circle at 50% 34%,#ff8089 0,#e63a4b 38%,#a11a2a 72%,#650f1a 100%);box-shadow:inset 0 3px 5px #ffffff66,inset 0 -8px 12px #3a0509cc,0 0 0 3px #12090c,0 8px 16px #000a,0 0 30px #e84c5966}
+.app-shell .control-page .sticks-row .joystick-stop:active{transform:translateY(2px) scale(.97);box-shadow:inset 0 2px 4px #ffffff33,inset 0 -4px 8px #3a0509cc,0 0 0 3px #12090c,0 3px 8px #000a,0 0 26px #e84c5977}
+
+/* ---------- DESKTOP LAYOUT ---------- */
+@media(min-width:901px){
+  .app-shell .control-page .drive-instruments{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);max-width:1000px;gap:34px;margin-top:auto}
+}
+@media(max-width:1150px){
+  .app-shell .control-page .sticks-row .joystick-stop{--stop:66px}
+}
+
+/* ---------- TABLET / MOBILE ---------- */
+@media(max-width:900px){
+  .app-shell .control-page .speed-gauge{--g:130px}
+  .app-shell .control-page .instrument-center>.instrument-label{margin-bottom:4px}
+  .app-shell .control-page .instrument-bottom{margin-top:4px}
+  .app-shell .control-page .instrument-side{padding:7px 9px;gap:5px}
+  .app-shell .control-page .instrument-side strong{font-size:18px}
+  .app-shell .control-page .instrument-track{height:7px}
+  .app-shell .control-page .sticks-row .joystick-stop{--stop:46px}
+  .app-shell .control-page .sticks-row .joystick-stop:before{inset:-6px}
+}
+@media(max-width:900px) and (orientation:portrait){
+  .app-shell .control-page .speed-gauge{--g:132px}
+  .app-shell .control-page .sticks-row .joystick-stop{--stop:42px}
+}
+@media(max-width:900px) and (orientation:landscape){
+  .app-shell .control-page .speed-gauge{--g:100px}
+}
+@media(prefers-reduced-motion:reduce){
+  .app-shell .control-page .gauge-needle,.app-shell .control-page .gauge-progress,.app-shell .control-page .stick-pad{transition:none}
+}
+
+/* Structural layout rules were lost when the controller styles were pasted over
+   the previous refinement file. These rules keep the new visuals in the correct
+   places without changing controller behavior. */
+.topbar{justify-content:flex-start}
+.brand{min-width:0}
+.brand small{display:none}
+.home-dashboard{padding-top:22px}
+.hero-panel.hero-vehicle-only{display:block;height:clamp(370px,52vh,540px);min-height:370px;border:0;border-radius:14px;background:radial-gradient(ellipse at 53% 57%,#1d41604f 0%,#101b27 45%,#0a1119 78%);box-shadow:inset 0 1px #ffffff0b,0 22px 50px #0003;overflow:hidden}
+.hero-panel.hero-vehicle-only:after{display:none}
+.hero-vehicle-only .hero-visual{height:100%;min-height:0;width:100%;background:radial-gradient(ellipse at 52% 60%,#14355444,transparent 62%)}
+.hero-vehicle-only .visual-grid{opacity:.12;background-size:48px 48px}
+.hero-vehicle-only .vehicle-scene{position:absolute;inset:0;min-height:0}
+.vehicle-scene canvas{width:100%;height:100%;display:block;touch-action:pan-y}
+.scene-loading{display:grid;place-items:center;width:100%;height:100%;color:#667c90;font:10px var(--mono);letter-spacing:.08em}
+.scene-fallback{display:none}
+.webgl-unavailable .scene-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:#9aabbb;font:10px var(--mono);letter-spacing:.1em}
+.webgl-unavailable .scene-fallback small{color:#73869a;font:11px Manrope;letter-spacing:0}
+.home-dashboard .section-heading{margin:25px 0 14px;align-items:center}
+.home-dashboard .section-heading h3{font-size:16px;margin-top:5px}
+.home-dashboard .section-heading .text-button{font-size:11px}
+.home-dashboard .metric-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.home-dashboard .metric-card{min-width:0}
+.metric-action-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:9px}
+.metric-action-row .metric-foot{padding:0;margin:0}
+.metric-action-row .primary-button{height:29px;padding:0 10px;font-size:9px;white-space:nowrap;box-shadow:none}
+.home-dashboard .metric-card>strong{margin-top:12px}
+
+.control-layout{grid-template-columns:minmax(0,1fr);padding:12px 0 10px}
+.control-stage{display:flex;flex-direction:column;justify-content:space-between;padding:0 20px}
+.drive-instruments{position:relative;z-index:3;display:grid;grid-template-columns:minmax(120px,1fr) minmax(170px,220px) minmax(120px,1fr);align-items:center;gap:22px;max-width:1000px;width:100%;margin:18px auto 4px}
+.app-shell .control-page .instrument-center .speed-gauge{--g:clamp(170px,26vh,230px)}
+.instrument-side{min-width:0;display:flex;flex-direction:column}
+.instrument-side.right{text-align:right}
+.instrument-center{min-width:0;display:flex;flex-direction:column;align-items:center;position:relative}
+.instrument-center>.instrument-label{margin-bottom:-5px}
+.instrument-center .speed-gauge{width:var(--g);height:var(--g);margin:0}
+.instrument-center .speed-gauge svg{inset:0;width:100%;height:100%}
+.instrument-bottom{width:100%;display:flex;align-items:center;justify-content:space-between;margin-top:-5px;color:#91a5b7;font:9px var(--mono)}
+.instrument-bottom>span{display:flex;align-items:center;gap:5px}
+.instrument-bottom svg{color:#64baff}
+.mode-pod{position:relative;z-index:8}
+.mode-toggle{display:flex;align-items:center;justify-content:center;gap:6px;min-width:68px;height:31px;padding:0 9px;border:1px solid #35536b;border-radius:18px;background:linear-gradient(145deg,#172b3c,#0d1721);color:#9fcff1;font:8px var(--mono);letter-spacing:.06em;box-shadow:0 4px 12px #0005;transition:all .16s}
+.mode-toggle:hover,.mode-toggle[aria-expanded=true]{border-color:#55baff;color:#e2f5ff;box-shadow:0 0 16px #168bff32}
+.radial-menu{position:absolute;left:50%;bottom:calc(100% + 10px);width:190px;height:77px;transform:translateX(-50%);z-index:12;pointer-events:none;animation:radial-open .16s ease-out}
+.radial-option{position:absolute;width:48px;height:48px;display:grid;place-items:center;border:1px solid #4d6c84;border-radius:50%;background:radial-gradient(circle at 34% 25%,#263e52,#101a24 75%);color:#c4d8e8;font:8px var(--mono);letter-spacing:.04em;box-shadow:0 6px 18px #0008;pointer-events:auto;transition:transform .16s,border-color .16s,background .16s}
+.radial-option:nth-child(1){left:0;bottom:0}
+.radial-option:nth-child(2){left:71px;bottom:28px}
+.radial-option:nth-child(3){right:0;bottom:0}
+.radial-option:hover,.radial-option.selected{border-color:#42c9ff;background:radial-gradient(circle at 35% 25%,#1f5777,#10202e 80%);color:#fff;box-shadow:0 0 17px #168bff4d}
+.sticks-row{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 58px minmax(0,1.2fr);align-items:center;justify-content:stretch;width:100%;max-width:1040px;margin:0 auto;gap:18px;padding:5px 22px 18px}
+.sticks-row>.stick-unit{width:auto;max-width:280px;justify-self:center}
+.sticks-row .right-drive-cluster{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:16px;min-width:0}
+.sticks-row .right-drive-cluster .stick-unit{width:auto;flex:0 1 255px}
+.app-shell .control-page .sticks-row .stick-pad{width:min(23vh,190px);height:min(23vh,190px);min-width:140px;min-height:140px}
+.sticks-row .joystick-stop{display:flex;flex:none;flex-direction:column;align-items:center;justify-content:center;gap:3px;order:0}
+.sticks-row .right-drive-cluster .stick-unit{order:1}
+.stick-pad{flex:none}
+.stick-unit.disabled .stick-pad{cursor:not-allowed}
+.stage-bottom{position:relative;left:auto;right:auto;bottom:auto;flex:none;margin-top:auto;padding:9px 0 12px}
+.alternate-controls{position:relative;left:auto;right:auto;bottom:auto;flex:none;margin:0 auto 8px;width:min(100%,940px)}
+@keyframes radial-open{from{opacity:0;scale:.8;translate:0 5px}to{opacity:1;scale:1;translate:0 0}}
+
+@media(max-width:1150px){
+  .home-dashboard .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .control-stage{padding:0 12px}
+  .drive-instruments{grid-template-columns:minmax(90px,1fr) minmax(150px,190px) minmax(90px,1fr);gap:14px}
+  .sticks-row{gap:10px;padding-left:12px;padding-right:12px}
+  .sticks-row .right-drive-cluster{gap:9px}
+}
+@media(max-width:900px){
+  .home-dashboard{padding-top:14px}
+  .hero-panel.hero-vehicle-only{height:clamp(300px,43vh,440px);min-height:300px;border-radius:10px}
+  .hero-vehicle-only .hero-visual{height:100%;min-height:0}
+  .home-dashboard .section-heading{margin:19px 0 10px}
+  .home-dashboard .metric-grid{gap:8px;border:0;background:transparent}
+  .home-dashboard .metric-card{min-height:122px;border:1px solid #1e2c3a;border-radius:7px;background:linear-gradient(145deg,#111b27,#0d151e);padding:12px}
+  .metric-action-row{align-items:flex-end}
+  .metric-action-row .metric-foot{font-size:7px}
+  .metric-action-row .primary-button{height:27px;padding:0 7px;font-size:8px}
+  .control-active .topbar,.control-active .sidebar{display:none}
+  .app-shell.control-active{height:100dvh;overflow:hidden}
+  .control-active .main-content{height:100dvh;padding:0;margin:0;overflow:hidden}
+  .control-page{height:100dvh;min-height:0;padding:12px 15px max(9px,env(safe-area-inset-bottom));overflow:hidden}
+  .control-top{padding-bottom:9px}
+  .control-layout{grid-template-columns:minmax(0,1fr);padding:7px 0;flex:1;min-height:0}
+  .control-stage{min-height:0;padding:0 10px}
+  .drive-instruments{grid-template-columns:minmax(75px,1fr) minmax(135px,170px) minmax(75px,1fr);gap:8px;margin:8px auto 0}
+  .app-shell .control-page .instrument-center .speed-gauge{--g:120px}
+  .instrument-label{font-size:7px}
+  .instrument-side strong{font-size:18px}
+  .instrument-note{font-size:6px}
+  .app-shell .control-page .instrument-center .speed-gauge{--g:78px}
+  .instrument-center .speed-number{font-size:19px}
+  .instrument-bottom{font-size:7px}
+  .mode-toggle{min-width:55px;height:27px;font-size:7px;padding:0 6px}
+  .radial-menu{scale:.88;transform:translateX(-50%);transform-origin:bottom center}
+  .sticks-row{grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);max-width:none;gap:7px;padding:5px 8px 10px}
+  .sticks-row>.stick-unit{max-width:none}
+  .app-shell .control-page .sticks-row .stick-pad{width:min(21vh,138px);height:min(21vh,138px);min-width:110px;min-height:110px}
+  .sticks-row .right-drive-cluster{gap:7px}
+  .sticks-row .right-drive-cluster .stick-unit{flex:1}
+  .sticks-row .joystick-stop{width:42px;height:60px;border-radius:9px}
+  .direction-readout{width:34px;gap:5px}
+  .vector{width:32px;height:32px;padding:4px}
+  .readout-cap,.direction-readout small{font-size:6px}
+  .stage-bottom{font-size:6px;margin-top:0;padding:5px 0 7px}
+  .control-footer{padding-top:5px}
+  .alternate-controls{margin:0 auto 5px;width:100%;min-height:56px}
+  .dpad{transform:scale(.72)}
+  .custom-actions button{height:30px}
+  .control-rail{display:none}
+}
+@media(max-width:900px) and (orientation:portrait){
+  .control-active .control-page{overflow-y:auto}
+  .control-layout{flex:none;grid-template-rows:auto}
+  .control-stage{min-height:0}
+  .drive-instruments{margin:8px auto 10px}
+  .sticks-row{padding:2px 8px 13px}
+  .app-shell .control-page .instrument-center .speed-gauge{--g:120px}
+  .app-shell .control-page .sticks-row .stick-pad{width:min(27vw,145px);height:min(27vw,145px);min-width:104px;min-height:104px}
+  .sticks-row .right-drive-cluster .stick-unit{flex:1}
+  .sticks-row .joystick-stop{width:39px;height:55px}
+  .stage-bottom{margin-top:5px}
+}
+@media(max-width:900px) and (orientation:landscape){
+  body:has(.control-active){overflow:hidden}
+  .control-active .main-content{padding-bottom:0}
+  .control-page{padding-top:max(7px,env(safe-area-inset-top));padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right));padding-bottom:max(7px,env(safe-area-inset-bottom))}
+  .control-top h1{font-size:16px}
+  .control-actions{gap:7px}
+  .control-layout{flex:1;min-height:0}
+  .control-stage{min-height:0}
+  .drive-instruments{margin:3px auto 0}
+  .app-shell .control-page .instrument-center .speed-gauge{--g:69px}
+  .sticks-row{padding-bottom:5px}
+  .stick-pad{width:min(22vh,150px);height:min(22vh,150px);min-width:110px;min-height:110px}
+  .stick-knob{width:48px;height:48px}
+  .sticks-row .joystick-stop{height:54px;width:40px}
+  .stage-bottom{padding:4px 0}
+  .control-footer{font-size:6px}
+}
+@media(prefers-reduced-motion:reduce){
+  .radial-menu{animation:none}
+  .mode-toggle,.radial-option{transition:none}
+}
+
+/* Final STOP control treatment: parallelogram at the throttle pad's lower left. */
+.app-shell .control-page .sticks-row .right-drive-cluster{align-items:flex-end}
+.app-shell .control-page .sticks-row .joystick-stop{width:72px;height:52px;align-self:flex-end;margin:0 0 6px;border:1px solid #a93440;border-radius:2px;clip-path:polygon(16% 0,100% 0,84% 100%,0 100%);background:linear-gradient(145deg,#fb5260 0%,#c62132 48%,#79121e 100%);box-shadow:inset 0 2px 4px #ffffff55,inset 0 -7px 10px #3a0509aa,0 5px 12px #0009,0 0 18px #e84c5930;color:#fff;gap:3px}
+.app-shell .control-page .sticks-row .joystick-stop:before{display:none}
+.app-shell .control-page .sticks-row .joystick-stop:hover{background:linear-gradient(145deg,#ff6975 0%,#dc2c3e 48%,#8c1823 100%);box-shadow:inset 0 2px 4px #ffffff66,inset 0 -7px 10px #3a0509aa,0 6px 14px #0009,0 0 23px #e84c5955}
+.app-shell .control-page .sticks-row .joystick-stop:focus-visible{outline:0;filter:drop-shadow(0 0 3px #42c9ff) drop-shadow(0 0 1px #42c9ff)}
+.app-shell .control-page .sticks-row .joystick-stop:active{transform:translateY(2px) scale(.97)}
+@media(max-width:900px){.app-shell .control-page .sticks-row .joystick-stop{width:58px;height:46px;margin-bottom:5px}}
+
+/* Phones can report a wide CSS viewport (for example, when desktop-site mode is
+   enabled). Key the landscape cockpit to touch capability as well as width. */
+@media(pointer:coarse){
+  .app-shell.control-active{height:100dvh;min-height:0;overflow:hidden}
+  .control-active .topbar,.control-active .sidebar{display:none}
+  .control-active .main-content{height:100dvh;margin:0;padding:0;overflow:hidden}
+  .control-active .control-page{height:100dvh;min-height:0;max-width:none;padding:max(7px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(6px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));overflow:hidden}
+}
+@media(pointer:coarse) and (orientation:landscape){
+  .control-active .control-top{flex:none;align-items:center;padding:0 0 6px}
+  .control-active .control-top .eyebrow{display:none}
+  .control-active .control-top h1{font-size:16px;margin:0}
+  .control-active .control-actions{gap:7px}
+  .control-active .control-actions .link-indicator{font-size:0;margin:0}
+  .control-active .control-actions .link-indicator .status-orb{width:8px;height:8px}
+  .control-active .control-actions .ready-button,.control-active .control-actions .close-control{height:32px}
+  .control-active .control-layout{display:grid;grid-template-columns:minmax(0,1fr);flex:1;min-height:0;padding:4px 0 5px}
+  .control-active .control-stage{width:100%;min-height:0;padding:0 10px;flex:1}
+  .control-active .drive-instruments{grid-template-columns:minmax(70px,1fr) minmax(112px,160px) minmax(70px,1fr);gap:clamp(5px,1.5vw,16px);margin:2px auto 0}
+  .app-shell .control-page .instrument-center .speed-gauge{--g:clamp(72px,22vh,130px)}
+  .control-active .instrument-center>.instrument-label{margin-bottom:0;font-size:7px}
+  .control-active .instrument-center .speed-number{font-size:18px}
+  .control-active .instrument-center .speed-number small{font-size:7px;margin-top:2px}
+  .control-active .instrument-bottom{margin-top:1px;font-size:7px}
+  .control-active .instrument-side{padding:5px 7px;gap:4px}
+  .control-active .instrument-side strong{font-size:16px}
+  .control-active .instrument-label{font-size:6px}
+  .control-active .instrument-track{height:5px}
+  .control-active .instrument-note{font-size:5px}
+  .control-active .mode-toggle{height:24px;min-width:50px;font-size:6px}
+  .control-active .sticks-row{grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);gap:5px;padding:2px 5px 4px}
+  .control-active .sticks-row>.stick-unit{max-width:none}
+  .app-shell .control-page .sticks-row .stick-pad{width:min(22vh,132px);height:min(22vh,132px);min-width:92px;min-height:92px}
+  .control-active .stick-heading{font-size:7px;gap:5px}
+  .control-active .stick-axis{font-size:6px}
+  .control-active .stick-knob{width:40px;height:40px}
+  .control-active .direction-readout{width:30px;gap:4px}
+  .control-active .vector{width:29px;height:29px;padding:3px}
+  .control-active .readout-cap,.control-active .direction-readout small{font-size:5px}
+  .app-shell .control-page .sticks-row .joystick-stop{width:54px;height:44px;margin:0 0 4px}
+  .app-shell .control-page .sticks-row .joystick-stop svg{width:16px;height:16px}
+  .app-shell .control-page .sticks-row .joystick-stop span{font-size:7px}
+  .control-active .stage-bottom{display:none}
+  .control-active .control-footer{flex:none;padding-top:4px;font-size:6px}
+  .control-active .control-footer span:last-child{display:none}
+}
+@media(pointer:coarse) and (orientation:landscape){
+  /* Beat the desktop-height rule so the instruments start near the stage top. */
+  .app-shell .control-page .drive-instruments{grid-template-columns:minmax(0,1fr) minmax(150px,clamp(150px,18vw,220px)) minmax(0,1fr);align-items:center;gap:clamp(8px,1.5vw,18px);max-width:1240px;width:100%;margin:2px auto 0}
+  .app-shell .control-page .instrument-side{width:min(100%,370px);padding:7px 10px 6px;gap:4px}
+  .app-shell .control-page .instrument-side:not(.right){justify-self:end}
+  .app-shell .control-page .instrument-side.right{justify-self:start}
+  .app-shell .control-page .instrument-side strong{font-size:20px}
+  .app-shell .control-page .instrument-label{font-size:7px}
+  .app-shell .control-page .instrument-track{height:6px}
+  .app-shell .control-page .instrument-note{font-size:6px}
+  .app-shell .control-page .instrument-center .speed-gauge{--g:clamp(116px,28vh,200px)}
+  .app-shell .control-page .instrument-center .speed-number{font-size:23px}
+  .app-shell .control-page .sticks-row .stick-pad{width:min(29vh,216px);height:min(29vh,216px);min-width:100px;min-height:100px}
+}
+@media(orientation:landscape) and (max-height:700px){
+  .app-shell .control-page .drive-instruments{grid-template-columns:minmax(0,1fr) minmax(140px,clamp(140px,18vw,210px)) minmax(0,1fr);align-items:center;gap:clamp(6px,1.2vw,14px);max-width:1240px;width:100%;margin:2px auto 0}
+  .app-shell .control-page .instrument-side{width:min(100%,300px);padding:6px 8px 5px;gap:3px}
+  .app-shell .control-page .instrument-side:not(.right){justify-self:end}
+  .app-shell .control-page .instrument-side.right{justify-self:start}
+  .app-shell .control-page .instrument-side strong{font-size:18px}
+  .app-shell .control-page .instrument-center .speed-gauge{--g:clamp(108px,27vh,190px)}
+  .app-shell .control-page .instrument-center .speed-number{font-size:21px}
+  .app-shell .control-page .sticks-row .stick-pad{width:min(30vh,205px);height:min(30vh,205px);min-width:100px;min-height:100px}
+  .app-shell .control-page .stage-bottom{display:none}
+}
+@media (pointer:coarse) and (orientation:landscape), (orientation:landscape) and (max-height:700px){
+  .control-active .control-layout{padding:4px 0 5px;min-height:0}
+  .app-shell .control-page .control-stage{position:relative;overflow:hidden}
+  .app-shell .control-page .stage-status,.app-shell .control-page .stage-bottom{display:none}
+  .app-shell .control-page .drive-instruments{position:absolute;top:4px;left:14px;right:14px;display:grid;grid-template-columns:minmax(0,1fr) minmax(140px,clamp(140px,18vw,220px)) minmax(0,1fr);align-items:start;gap:clamp(6px,1.2vw,14px);width:auto;max-width:1240px;margin:0 auto}
+  .app-shell .control-page .instrument-side{align-self:start;width:min(100%,300px);padding:6px 8px 5px;gap:3px}
+  .app-shell .control-page .instrument-side:not(.right){justify-self:end}
+  .app-shell .control-page .instrument-side.right{justify-self:start}
+  .app-shell .control-page .instrument-side strong{font-size:18px}
+  .app-shell .control-page .instrument-label{font-size:7px}
+  .app-shell .control-page .instrument-track{height:6px}
+  .app-shell .control-page .instrument-note{font-size:6px}
+  .app-shell .control-page .instrument-center .speed-gauge{--g:clamp(130px,32.4vh,228px)}
+  .app-shell .control-page .instrument-center .speed-number{font-size:23px}
+  .app-shell .control-page .instrument-center .speed-number small{font-size:8px}
+  .app-shell .control-page .instrument-bottom{margin-top:2px;font-size:7px}
+  .app-shell .control-page .mode-toggle{height:26px;min-width:54px}
+  .app-shell .control-page .sticks-row{position:absolute;left:12px;right:12px;bottom:14px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;justify-content:stretch;gap:8px;width:auto;max-width:1240px;margin:0 auto;padding:0}
+  .app-shell .control-page .sticks-row>.stick-unit{width:auto;max-width:none}
+  .app-shell .control-page .direction-readout{display:none}
+  .app-shell .control-page .sticks-row .right-drive-cluster{justify-content:center;align-items:flex-end;gap:8px;width:100%}
+  .app-shell .control-page .sticks-row .right-drive-cluster .stick-unit{flex:0 1 auto}
+  .app-shell .control-page .sticks-row .stick-pad{width:min(43.5vh,324px);height:min(43.5vh,324px);min-width:130px;min-height:130px}
+  .app-shell .control-page .sticks-row .joystick-stop{width:70px;height:44px;margin:0 0 4px}
+}
+@media(orientation:landscape) and (max-height:700px) and (pointer:fine){.app-shell .control-page .sticks-row .stick-pad{width:min(45vh,307.5px);height:min(45vh,307.5px);min-width:150px;min-height:150px}}
+@media(pointer:coarse) and (orientation:landscape){
+  .app-shell .control-page .instrument-center .speed-gauge{--g:clamp(139px,33.6vh,240px)}
+  .app-shell .control-page .sticks-row .stick-pad{width:min(43.5vh,324px);height:min(43.5vh,324px);min-width:195px;min-height:195px}
+}

@@ -2,6 +2,10 @@
 
 Mobile-first robotic vehicle control interface for ESP32 Wi-Fi robots.
 
+<p align="center">
+  <img src="./public/assets/Pasted%20image.png" alt="NEXDRIVE app preview" width="900" />
+</p>
+
 ## Development
 
 ```sh
